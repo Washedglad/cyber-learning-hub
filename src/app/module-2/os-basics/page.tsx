@@ -1,5 +1,8 @@
+'use client';
+
 import { modules } from '@/data/curriculum';
 import ContentPage from '@/components/ContentPage';
+import FirewallBuilder from '@/components/FirewallBuilder';
 
 export default function OSBasicsPage() {
   const currentModule = modules[1];
@@ -11,7 +14,8 @@ export default function OSBasicsPage() {
       module={currentModule}
       page={page}
       prevPage={prevPage}
-    />
+    >
+      <FirewallBuilder />
+    </ContentPage>
   );
 }
-
