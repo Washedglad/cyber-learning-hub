@@ -1,5 +1,8 @@
+'use client';
+
 import { modules } from '@/data/curriculum';
 import ContentPage from '@/components/ContentPage';
+import PhishingChallenge from '@/components/PhishingChallenge';
 
 export default function UserSecurityPage() {
   const currentModule = modules[0];
@@ -11,7 +14,8 @@ export default function UserSecurityPage() {
       module={currentModule}
       page={page}
       prevPage={prevPage}
-    />
+    >
+      <PhishingChallenge />
+    </ContentPage>
   );
 }
-
