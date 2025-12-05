@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Check, ChevronDown, ChevronRight, Home, Wrench } from 'lucide-react';
@@ -12,7 +12,25 @@ export default function Sidebar() {
   const { visitedPages, passedQuizzes, getModuleProgress } = useProgress();
   const [expandedModules, setExpandedModules] = React.useState<Set<string>>(new Set(modules.map(m => m.id)));
 
-  const toggleModule = (moduleId: string) => {
+  // Auto-expand the module containing the current page
+  useEffect(() => {
+    const activeModule = modules.find(
+      (m) =>
+        m.pages.some((p) => pathname === p.route) ||
+        pathname === `/${m.id}/quiz`
+    );
+    if (activeModule) {
+      setExpandedModules((prev) => {
+        const next = new Set(prev);
+        next.add(activeModule.id);
+        return next;
+      });
+    }
+  }, [pathname]);
+
+  const toggleModule = (moduleId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setExpandedModules((prev) => {
       const next = new Set(prev);
       if (next.has(moduleId)) {
@@ -28,7 +46,7 @@ export default function Sidebar() {
   const isModuleQuizPassed = (moduleId: string) => passedQuizzes.has(moduleId);
 
   return (
-    <aside className="w-72 min-h-screen bg-cyber-bg-light border-r border-[#2a2a35] flex flex-col">
+    <aside className="w-72 min-h-screen bg-cyber-bg-light border-r border-[#2a2a35] flex flex-col flex-shrink-0 relative z-10">
       {/* Logo / Title */}
       <div className="p-6 border-b border-[#2a2a35]">
         <Link href="/" className="flex items-center gap-3 group">
@@ -69,8 +87,9 @@ export default function Sidebar() {
               <div key={module.id} className="space-y-1">
                 {/* Module Header */}
                 <button
-                  onClick={() => toggleModule(module.id)}
-                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#1a1a24] transition-colors group"
+                  type="button"
+                  onClick={(e) => toggleModule(module.id, e)}
+                  className="w-full flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-[#1a1a24] transition-colors group cursor-pointer"
                 >
                   <span className="text-lg">{module.icon}</span>
                   <span className="flex-1 text-left text-sm font-medium text-zinc-300 group-hover:text-white truncate">

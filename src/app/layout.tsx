@@ -19,7 +19,7 @@ export default function RootLayout({
         <ProgressProvider>
           <div className="flex min-h-screen">
             <Sidebar />
-            <main className="flex-1 overflow-auto">
+            <main className="flex-1 min-w-0 overflow-auto">
               <div className="grid-pattern min-h-full">
                 {children}
               </div>
