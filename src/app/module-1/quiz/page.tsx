@@ -6,7 +6,7 @@ import { modules } from '@/data/curriculum';
 import Quiz from '@/components/Quiz';
 
 export default function Module1QuizPage() {
-  const module = modules[0];
+  const currentModule = modules[0];
 
   return (
     <div className="p-8 lg:p-12 animate-fade-in">
@@ -16,7 +16,7 @@ export default function Module1QuizPage() {
           Home
         </Link>
         <span>/</span>
-        <span className="text-zinc-400">{module.icon} {module.title}</span>
+        <span className="text-zinc-400">{currentModule.icon} {currentModule.title}</span>
         <span>/</span>
         <span className="text-zinc-300">Quiz</span>
       </div>
@@ -24,18 +24,18 @@ export default function Module1QuizPage() {
       {/* Back link */}
       <div className="max-w-2xl mx-auto mb-8">
         <Link
-          href={module.pages[module.pages.length - 1].route}
+          href={currentModule.pages[currentModule.pages.length - 1].route}
           className="inline-flex items-center gap-2 text-zinc-400 hover:text-cyber-cyan transition-colors"
         >
           <ArrowLeft size={16} />
-          Back to {module.pages[module.pages.length - 1].title}
+          Back to {currentModule.pages[currentModule.pages.length - 1].title}
         </Link>
       </div>
 
       <Quiz
-        moduleId={module.id}
-        moduleTitle={module.title}
-        questions={module.quiz}
+        moduleId={currentModule.id}
+        moduleTitle={currentModule.title}
+        questions={currentModule.quiz}
       />
     </div>
   );

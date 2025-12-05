@@ -2,13 +2,13 @@ import { modules } from '@/data/curriculum';
 import ContentPage from '@/components/ContentPage';
 
 export default function NetworkingEssentialsPage() {
-  const module = modules[1];
-  const page = module.pages[0];
-  const nextPage = module.pages[1];
+  const currentModule = modules[1];
+  const page = currentModule.pages[0];
+  const nextPage = currentModule.pages[1];
 
   return (
     <ContentPage
-      module={module}
+      module={currentModule}
       page={page}
       nextPage={nextPage}
     />

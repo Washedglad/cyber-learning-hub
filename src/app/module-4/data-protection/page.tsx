@@ -2,13 +2,13 @@ import { modules } from '@/data/curriculum';
 import ContentPage from '@/components/ContentPage';
 
 export default function DataProtectionPage() {
-  const module = modules[3];
-  const page = module.pages[1];
-  const prevPage = module.pages[0];
+  const currentModule = modules[3];
+  const page = currentModule.pages[1];
+  const prevPage = currentModule.pages[0];
 
   return (
     <ContentPage
-      module={module}
+      module={currentModule}
       page={page}
       prevPage={prevPage}
     />
