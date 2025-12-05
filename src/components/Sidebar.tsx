@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Check, ChevronDown, ChevronRight, Home, Wrench } from 'lucide-react';
 import { modules } from '@/data/curriculum';
 import { useProgress } from '@/context/ProgressContext';
+import Logo from '@/components/Logo';
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -49,16 +50,8 @@ export default function Sidebar() {
     <aside className="w-72 min-h-screen bg-cyber-bg-light border-r border-[#2a2a35] flex flex-col flex-shrink-0 relative z-10">
       {/* Logo / Title */}
       <div className="p-6 border-b border-[#2a2a35]">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyber-green to-cyber-cyan flex items-center justify-center">
-            <span className="text-cyber-bg font-bold text-lg">C</span>
-          </div>
-          <div>
-            <h1 className="text-lg font-bold text-white group-hover:text-cyber-green transition-colors">
-              CyberLearn
-            </h1>
-            <p className="text-xs text-zinc-500">Security Fundamentals</p>
-          </div>
+        <Link href="/" className="group">
+          <Logo size="md" />
         </Link>
       </div>
 

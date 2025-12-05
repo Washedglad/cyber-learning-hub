@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, Check, ChevronDown, ChevronRight, Home, Wrench } from 'lucide-react';
 import { modules } from '@/data/curriculum';
 import { useProgress } from '@/context/ProgressContext';
+import Logo from '@/components/Logo';
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,9 +59,7 @@ export default function MobileNav() {
         </button>
         
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyber-green to-cyber-cyan flex items-center justify-center">
-            <span className="text-cyber-bg font-bold">C</span>
-          </div>
+          <Logo size="sm" showText={false} />
           <span className="font-bold text-white">CyberLearn</span>
         </Link>
         
@@ -86,14 +85,8 @@ export default function MobileNav() {
       >
         {/* Menu Header */}
         <div className="p-4 border-b border-[#2a2a35] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyber-green to-cyber-cyan flex items-center justify-center">
-              <span className="text-cyber-bg font-bold text-lg">C</span>
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-white">CyberLearn</h1>
-              <p className="text-xs text-zinc-500">Security Fundamentals</p>
-            </div>
+          <Link href="/" className="group" onClick={() => setIsOpen(false)}>
+            <Logo size="md" />
           </Link>
           <button
             onClick={() => setIsOpen(false)}

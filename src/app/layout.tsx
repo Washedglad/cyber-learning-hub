@@ -6,7 +6,21 @@ import { ProgressProvider } from '@/context/ProgressContext';
 
 export const metadata: Metadata = {
   title: 'CyberLearn - Security Fundamentals',
-  description: 'An interactive learning hub for cybersecurity fundamentals',
+  description: 'An interactive learning hub for cybersecurity fundamentals. Master networking, cryptography, and security concepts through hands-on challenges.',
+  keywords: ['cybersecurity', 'learning', 'security', 'networking', 'hacking', 'CTF', 'education'],
+  authors: [{ name: 'CyberLearn' }],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/icon.svg',
+  },
+  themeColor: '#0A0A0F',
+  openGraph: {
+    title: 'CyberLearn - Security Fundamentals',
+    description: 'Master cybersecurity through interactive modules and hands-on challenges.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
