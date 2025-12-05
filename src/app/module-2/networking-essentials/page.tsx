@@ -1,5 +1,8 @@
+'use client';
+
 import { modules } from '@/data/curriculum';
 import ContentPage from '@/components/ContentPage';
+import TerminalChallenge from '@/components/TerminalChallenge';
 
 export default function NetworkingEssentialsPage() {
   const currentModule = modules[1];
@@ -11,7 +14,14 @@ export default function NetworkingEssentialsPage() {
       module={currentModule}
       page={page}
       nextPage={nextPage}
-    />
+    >
+      <TerminalChallenge
+        title="Network Discovery Lab"
+        objective="Use the ping command to test connectivity to google.com"
+        hint="Try typing: ping google.com"
+        successCommand="ping google.com"
+        successMessage="Connection successful! You've verified network connectivity to google.com."
+      />
+    </ContentPage>
   );
 }
-

@@ -11,9 +11,10 @@ interface ContentPageProps {
   page: Page;
   prevPage?: Page;
   nextPage?: Page;
+  children?: React.ReactNode;
 }
 
-export default function ContentPage({ module, page, prevPage, nextPage }: ContentPageProps) {
+export default function ContentPage({ module, page, prevPage, nextPage, children }: ContentPageProps) {
   const { markPageVisited } = useProgress();
 
   useEffect(() => {
@@ -69,6 +70,13 @@ export default function ContentPage({ module, page, prevPage, nextPage }: Conten
         ))}
       </div>
 
+      {/* Interactive Challenges */}
+      {children && (
+        <div className="mb-12">
+          {children}
+        </div>
+      )}
+
       {/* Navigation */}
       <div className="border-t border-[#2a2a35] pt-8">
         <div className="flex items-center justify-between">
@@ -107,4 +115,5 @@ export default function ContentPage({ module, page, prevPage, nextPage }: Conten
     </div>
   );
 }
+
 
