@@ -182,13 +182,21 @@ export default function PhishingChallenge({ onComplete }: PhishingChallengeProps
 
   const handleFlagClick = (flagId: string) => {
     if (!foundFlags.has(flagId)) {
-      setFoundFlags(prev => new Set([...prev, flagId]));
+      setFoundFlags(prev => {
+        const next = new Set(prev);
+        next.add(flagId);
+        return next;
+      });
       setShowExplanation(flagId);
       
       // Check if this completes the email
       const newFoundCount = foundInCurrent + 1;
-      if (newFoundCount === totalFlags) {
-        setCompletedEmails(prev => new Set([...prev, currentEmail.id]));
+        if (newFoundCount === totalFlags) {
+          setCompletedEmails(prev => {
+            const next = new Set(prev);
+            next.add(currentEmail.id);
+            return next;
+          });
         if (completedEmails.size + 1 === phishingEmails.length) {
           onComplete?.();
         }
