@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-bg: #0A0A0F;
+  --cyber-bg-light: #121217;
+  --cyber-bg-card: #1a1a24;
+  --cyber-green: #00FF88;
+  --cyber-cyan: #00FFFF;
+  --cyber-green-dim: #00cc6a;
+  --cyber-cyan-dim: #00cccc;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--cyber-bg);
+  color: #e4e4e7;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cyber-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a45;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(0, 255, 136, 0.3);
+  color: #fff;
+}
+
+/* Links */
+a {
+  color: var(--cyber-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--cyber-green);
+}
+
+/* Code blocks */
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  background-color: var(--cyber-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid #2a2a35;
+}
+
+pre {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  background-color: var(--cyber-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #2a2a35;
+  position: relative;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+/* Cyber glow effects */
+.cyber-glow {
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.cyber-glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.cyber-border {
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.cyber-border-cyan {
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cyber-green) 0%, var(--cyber-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid pattern background */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Animated gradient border */
+.animated-border {
+  position: relative;
+  background: var(--cyber-bg-card);
+  border-radius: 12px;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, var(--cyber-green), var(--cyber-cyan), var(--cyber-green));
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Topic card */
+.topic-card {
+  background: linear-gradient(135deg, var(--cyber-bg-card) 0%, rgba(26, 26, 36, 0.8) 100%);
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.topic-card:hover {
+  border-color: rgba(0, 255, 136, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+/* Quiz styles */
+.quiz-option {
+  background: var(--cyber-bg);
+  border: 1px solid #2a2a35;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-option:hover {
+  border-color: var(--cyber-cyan);
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.quiz-option.selected {
+  border-color: var(--cyber-cyan);
+  background: rgba(0, 255, 255, 0.1);
+}
+
+.quiz-option.correct {
+  border-color: var(--cyber-green);
+  background: rgba(0, 255, 136, 0.15);
+}
+
+.quiz-option.incorrect {
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.15);
+}
+
+/* Pulse animation for checkmarks */
+@keyframes check-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.check-pulse {
+  animation: check-pulse 0.3s ease;
+}
+
+/* Sidebar link active state */
+.sidebar-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.sidebar-link.active {
+  background: rgba(0, 255, 136, 0.15);
+}
+
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--cyber-green);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Terminal-style code header */
+.code-header {
+  background: linear-gradient(90deg, var(--cyber-green) 0%, var(--cyber-cyan) 100%);
+  color: var(--cyber-bg);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  background: #2a2a35;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyber-green) 0%, var(--cyber-cyan) 100%);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
